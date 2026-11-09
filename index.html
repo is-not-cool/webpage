@@ -1,35 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>is-not.cool</title>
-    <link rel="stylesheet" href="scripts/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>is-not.cool — a goofy subdomain service</title>
+<meta name="description" content="is-not.cool is a goofy subdomain service. Trade a boring pages.dev, vercel.app or github.io URL for a domain that is not boring.">
+<meta name="theme-color" content="#06060a">
+<link rel="canonical" href="https://is-not.cool/">
+<meta name="author" content="trollmeight">
+<meta name="revised" content="sgdev-official, 2026-11-09">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2306060a'/%3E%3Ctext x='8' y='12.5' font-family='monospace' font-size='12' font-weight='bold' text-anchor='middle' fill='%237dffb2'%3E*%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="scripts/style.css">
 </head>
 <body>
-    <div class="galaxy">
-        <div class="stars1"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="inner">
+    <a class="brand" href="./">is-not<span class="dot">.</span>cool</a>
+    <nav aria-label="Primary">
+      <a href="#records">Records</a>
+      <a href="#how">How it works</a>
+      <a href="tos/">Terms</a>
+      <a href="https://github.com/is-not-cool/registration" rel="noopener">GitHub ↗</a>
+      <a class="btn small" href="https://github.com/is-not-cool/registration" rel="noopener">Get a subdomain</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div>
+      <h1>is-not<span class="dot">.</span>cool</h1>
+      <p class="lede">A goofy subdomain service for swapping <b>pages.dev</b>, <b>vercel.app</b> and <b>github.io</b> links for a domain that is, well, not that.</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/is-not-cool/registration" rel="noopener">Register a subdomain</a>
+        <a class="btn ghost" href="tos/">Read the ToS</a>
+      </div>
+      <p class="note">Reviewed by maintainers · runs on DNSControl + Cloudflare</p>
     </div>
-    <div class="containertop">
-        <h1>is-not.cool</h1>
-        <p><a href="https://github.com/is-not-cool/registration">is-not.cool</a> is a goofy subdomain service, allowing you to switch from boring domains from hosting providers like 
-            <a href="https://pages.cloudflare.com/">pages.dev</a>,
-            <a href="https://vercel.com">vercel.app</a>,
-            <a href="https://docs.github.com/en/pages">github.io</a> and etc.</p>
-        <p>To register a is-not.cool domain, please read <a href="tos/index.html">our ToS</a> and the README in <a href="https://github.com/is-not-cool/registration">our repository.</a></p>
+
+    <figure class="term" aria-label="Example DNS lookup">
+      <div class="bar"><span class="live" aria-hidden="true"></span>example lookup</div>
+      <pre><code><span class="p">$</span> dig who.is-not.cool
+<span class="c">; ANSWER SECTION</span>
+who.is-not.cool.  <span class="k">300</span>  IN  CNAME  you.pages.dev.
+<span class="p">$</span> <span class="caret" aria-hidden="true"></span></code></pre>
+    </figure>
+  </section>
+
+  <section class="band" id="records">
+    <div class="inner">
+      <h2>Records it speaks</h2>
+      <p>As of February 13, 2026, is-not.cool supports A, AAAA, CNAME, MX, TXT, NS, SRV and DS records — so it can point at whatever you are already hosting.</p>
+      <ul class="chips" aria-label="Supported record types">
+        <li>A</li><li>AAAA</li><li>CNAME</li><li>MX</li><li>TXT</li><li>NS</li><li>SRV</li><li>DS</li>
+      </ul>
     </div>
-    <div class="containertwo">
-        <h1>How does this work?</h1>
-        <p><a href="https://github.com/is-not-cool/registration">is-not.cool</a> is powered by <a href="https://dnscontrol.org">DNSControl</a> and <a href="https://cloudflare.com">Cloudflare</a>, which allows DNS records to be made via our Github repository.</p>
-        <p>As of February 13, 2026, <a href="https://github.com/is-not-cool/registration">is-not.cool</a> supports many types of records, such as A, AAAA, CNAME, MX, TXT, NS, SRV, and DS</p>
+  </section>
+
+  <section class="band" id="how">
+    <div class="inner">
+      <h2>How it works</h2>
+      <p>is-not.cool is powered by <a href="https://dnscontrol.org" rel="noopener">DNSControl</a> and <a href="https://cloudflare.com" rel="noopener">Cloudflare</a>, which means records are made through the GitHub repository — reviewed like code, deployed like code.</p>
+      <ol class="steps">
+        <li>
+          <span class="n">01</span>
+          <div>
+            <h3>Read the rules</h3>
+            <p>Start with the <a href="tos/">terms of service</a> and the README in the <a href="https://github.com/is-not-cool/registration" rel="noopener">registration repository</a>.</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <div>
+            <h3>Add your record</h3>
+            <p>Fork the repository and add the record for the subdomain you want, following the examples already there.</p>
+          </div>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <div>
+            <h3>Open a pull request</h3>
+            <p>Once a maintainer merges it, DNSControl pushes the record to Cloudflare and the subdomain goes live.</p>
+          </div>
+        </li>
+      </ol>
     </div>
-    <div class="containerthree">
-        <h1>Information</h1>
-        <p>If you have any questions, you can contact us in our <a href="">discord server</a> or <a href="mailto:support@trollmeight.me">email</a>.</p>
-         <p>If you like this project, make sure to check out <a href="https://github.com/open-domains/register">Open Domains</a>, <a href="https://github.com/is-a-dev/register">is-a.dev</a>, and <a href="https://github.com/partofmyid/register">part-of-my.id</a></p>
+  </section>
+
+  <section class="band">
+    <div class="inner">
+      <h2>Say hello</h2>
+      <p>Questions about a record or a rejected pull request? <a href="mailto:support@trollmeight.me">Email the maintainers</a> or open an issue in the <a href="https://github.com/is-not-cool/registration" rel="noopener">registration repo</a>.</p>
+      <p>If you like this project, go look at some neighbours:</p>
+      <ul class="links">
+        <li><a href="https://github.com/open-domains/register" rel="noopener">Open Domains</a></li>
+        <li><a href="https://github.com/is-a-dev/register" rel="noopener">is-a.dev</a></li>
+        <li><a href="https://github.com/partofmyid/register" rel="noopener">part-of-my.id</a></li>
+      </ul>
     </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>is-not.cool — a silly domain for serious projects.</span>
+    <span class="set">
+      <a href="tos/">Terms</a>
+      <a href="https://github.com/is-not-cool/registration" rel="noopener">GitHub</a>
+      <a href="mailto:support@trollmeight.me">Email</a>
+    </span>
+    <span>DNSControl &amp; Cloudflare</span>
+    <span>Built by trollmeight · modified by <a href="https://github.com/sgdev-official" rel="noopener">sgdev-official</a></span>
+  </div>
+</footer>
+
+<script src="scripts/sky.js" defer></script>
 </body>
 </html>
